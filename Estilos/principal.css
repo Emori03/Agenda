@@ -1,0 +1,411 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+.container {
+    display: flex;
+}
+.container a {
+    text-decoration: none;
+    color: white;
+}
+.container .sesionBtn {
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 0px 0px 0px 10px;
+    color: white;
+    padding: 10px;
+}
+/* Clases del NavBar */
+#sidebar {
+    background-color: #333;
+    color: white;
+    width: 0px;
+    height: 100vh;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#sidebar ul {
+    margin-top: 50px;
+    list-style-type: none;
+    padding: 0;
+}
+#sidebar li {
+    padding: 15px;
+    border-bottom: 1px solid #555;
+}
+#sidebar a {
+    text-decoration: none;
+    color: white;
+}
+#toggleBtn {
+    position: fixed;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #333;
+    border: none;
+    border-radius: 0px 0px 10px 0px;
+    color: white;
+    padding: 10px;
+    z-index: 2;
+}
+#toggleBtn:hover {
+    background-color: #555;
+}
+/* Clases de contenido de la pagina */
+.contenido {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Clases de las Tareas */
+.tareas {
+    overflow-x: hidden;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.tareas .botones {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+}
+.tareas .botones {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    padding: 5px;
+}
+.tareas .botones #tarea {
+    background-color: #046444;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+.tareas .botones #eliminar {
+    background-color: #ff7300;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+.tareas table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+.tareas th {
+    background-color: #046444;
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+.tareas td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: center;
+}
+td.tareasMateria:hover{
+    background-image: url('../Imagenes/Plus.png');
+    background-position: center;
+    background-size: 2em;
+    background-repeat: no-repeat;
+    background-color: #61b18d;
+    cursor: pointer;
+    color: #61b18d;
+}
+.tareas td img {
+    max-width: 2em;
+    max-height: 2em;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Clases de las Materias */
+.materias {
+    overflow-x: hidden;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.materias table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.materias th {
+    background-color: #046444;
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+.materias td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: center;
+}
+.materias td img {
+    max-width: 2em;
+    max-height: 2em;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Clases de la Agenda */
+.agenda {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 1em;
+    max-width: 960px;
+    margin: 0 auto;
+}
+.agenda .dias {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: calc(14% - 20px);
+    margin: 10px;
+    margin-bottom: 0px;
+    background-color: #046444;
+}
+.agenda .dias p {
+    text-align: center;
+    margin: 0px;
+    color: white;
+}
+.agenda .hora {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    height: 7em;
+    width: calc(14% - 20px);
+    margin: 10px;
+    background-color: #cdcec7;
+}
+.agenda .hora p {
+    color: black;
+}
+.agenda .clase {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: calc(14% - 20px);
+    height: 7em;
+    margin: 10px;
+    background-color: #fff;
+}
+.agenda .clase img {
+    max-width: 2em;
+    max-height: 2em;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Clases del Calendario */
+.calendario {
+    overflow-x: hidden;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.calendario button {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: 1px green solid;
+    border-radius: 1em;
+    cursor: pointer;
+    margin: 5px;
+}
+.calendario button:hover {
+    background-color: #919191;
+}
+.calendario button#anterior {
+    float: left;
+}
+.calendario button#siguiente {
+    float: right;
+}
+.calendario table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.calendario th {
+    background-color: #046444;
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+.calendario td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: center;
+}
+.calendario td.dia.hoy {
+    background-color: #45a0498e;
+}
+.calendario td.dia.antes {
+    background-color: #4e4e4e8e;
+}
+.calendario td.dia.hoy:hover,
+.calendario td.dia.despues:hover {
+    background-image: url('../Imagenes/Plus.png');
+    background-position: center;
+    background-size: 2em;
+    background-repeat: no-repeat;
+    background-color: #61b18d;
+    cursor: pointer;
+    color: #61b18d;
+    z-index: 1;
+}
+.calendario td.dia img {
+    padding: 1em;
+    width: 2em;
+    height: 2em;
+}
+.calendario td.dia img:hover {
+    background-color: #333;
+    cursor: pointer;
+    border-radius: 2em;
+    z-index: 5;
+}
+.calendario caption {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Modal para nueva tarea */
+#fondoOscuro {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color oscuro con opacidad */
+    z-index: 5;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    border-radius: 1em;
+    padding: 20px;
+    z-index: 10;
+}
+.modal-contenido {
+    max-width: 600px;
+    margin: auto;
+}
+.cerrar-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.cerrar-modal:hover {
+    color: black;
+}
+
+/* Formulario de Tareas */
+.homework {
+    max-width: 35em;
+    min-height: 35em;
+    margin: 0 auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.homework label {
+    color: rgb(0, 0, 0);
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.homework input,
+select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #046444;
+    border-radius: 1em;
+}
+.homework button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.homework button:hover {
+    background-color: #45a049;
+}
+
+/* Lista tareas */
+.listaTareas {
+    max-width: 35em;
+    min-height: 35em;
+    margin: 0 auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.listaTareas table {
+    border: none;
+    padding: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+.listaTareas table .encabezados {
+    background-color: #046444;
+}
+.listaTareas table td {
+    border: none;
+}
+.listaTareas button.EliminarBtn {
+    background-color: #ff7300;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Perfil card */
+.perfil-card {
+    height: 50vh;
+    margin: 0;
+    width: 300px;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 2em;
+    left: 10em;
+}
+.perfil-card h2 {
+    margin-top: 0;
+}
+.perfil-info {
+    margin-bottom: 10px;
+}
+.edit-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #333;
+    cursor: pointer;
+}

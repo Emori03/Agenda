@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas 7 IDGS</title>
+    <link rel="icon" href="./Imagenes/Kanna Icon.png">
+    <link rel="stylesheet" href="./Estilos/principal.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- NavBar -->
+        <button id="toggleBtn">☰</button>
+        <nav id="sidebar">
+            <ul>
+                <li>Bienvenido:<a href="#" data-modulo="./Modulos/Perfil.html"><p id="usuario"></p></a></li>
+                <li><a href="#" data-modulo="./Modulos/Tareas.html">Tareas</a></li>
+                <li><a href="#" data-modulo="./Modulos/Materias.html">Materias</a></li>
+                <li><a href="#" data-modulo="./Modulos/Agenda.html">Agenda</a></li>
+                <li><a href="#" data-modulo="./Modulos/Calendario.html">Calendario</a></li>
+            </ul>
+        </nav>
+        <a href="./FuncionesPHP/Cerrar.php"><button class="sesionBtn">Cerrar sesión</button></a>
+        <!-- Contenido de la pagina donde se cargan los modulos -->
+        <div class="contenido" id="contenido">
+            
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./FuncionesJS/principal.js"></script>
+</body>
+
+</html>

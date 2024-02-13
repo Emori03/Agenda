@@ -1,0 +1,48 @@
+<div id="modal" class="modal">
+    <div class="modal-contenido">
+        <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+        <form class="homework" id="tareaForm">
+            <div class="form-group">
+                <label for="">Materia:</label>
+                <select name="materia" id="materia">
+                    <option value="0">Seleccione la materia</option>
+                    <option value="1">Arquitectura de software</option>
+                    <option value="2">Seguridad informática</option>
+                    <option value="3">Administracion del tiempo</option>
+                    <option value="4">Metodológias para el desarrollo de proyectos</option>
+                    <option value="5">Matemáticas para la ingeneria</option>
+                    <option value="6">Ingles</option>
+                    <option value="7">Experiencia de usuario</option>
+                    <option value="8">Tutorias</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">Tarea:</label>
+                <input type="text" name="tarea" id="tarea" placeholder="Escribe el nombre de la tarea">
+            </div>
+            <div class="form-group">
+                <label for="">Tipo:</label>
+                <select name="tipo" id="tipo">
+                    <option value="0">Escoge el tipo</option>
+                    <option value="1">Saber</option>
+                    <option value="2">Saber Hacer</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">Fecha de entrega:</label>
+                <input type="date" name="fecha" id="fecha">
+            </div>
+            <div class="form-group">
+                <label for="">Descripción:</label>
+                <input type="text" name="descripcion" id="descripcion" plaholder="Escribe caracteristicas de la tarea">
+                </inpupt>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="guardar" id="guardar">Guardar</button>
+                <button type="reset">Limpiar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="./FuncionesJS/Tarea.js"></script>
