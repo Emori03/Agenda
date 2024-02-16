@@ -1,13 +1,23 @@
 <div class="perfil-card">
-    <span class="edit-icon">&#9998;</span>
-    <h2>Nombre:<br><p id="nombre">Juan Pérez</p></h2>
+    <span class="edit-perfil" onclick="editarPerfil()">&#9998;</span>
+    <h2>Nombre:<br></h2>
+    <input type="text" id="nombre" placeholder="Nombre">
     <div class="perfil-info">
-        <strong>Correo:</strong><br><p id="correo">juan@example.com</p>
+        <strong>Correo:</strong><br>
+        <input type="text" id="correo" placeholder="Correo electronico">
     </div>
     <div class="perfil-info">
-        <strong>Carrera:</strong><br><p id="carrera">Ingeniería Informática</p>
+        <strong>Carrera:</strong><br>
+        <select id="carrera">
+            <option value="1">Ing. Desarrollo y Gestion de Software</option>
+        </select>
     </div>
     <div class="perfil-info">
-        <strong>Grupo:</strong><br><p id="grupo">Grupo A</p>
+        <strong>Grupo:</strong><br>
+        <select name="" id="grupo">
+            <option value="1">7IDGSA</option>
+            <option value="2">7IDGSB</option>
+        </select>
     </div>
+    <button name="actualizar" id="actualizar" class="boton mode">Actualizar</button>
 </div>

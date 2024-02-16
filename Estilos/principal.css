@@ -71,6 +71,13 @@ body {
     margin-left: 30px;
     margin-top: 30px;
 }
+.tareas .filtro {
+    width: 50vh;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #046444;
+    border-radius: 1em;
+}
 .tareas .botones {
     position: absolute;
     top: 0;
@@ -337,7 +344,7 @@ td.tareasMateria:hover{
     margin-bottom: 5px;
 }
 .homework input,
-select {
+.homework select {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -386,9 +393,9 @@ select {
 
 /* Perfil card */
 .perfil-card {
-    height: 50vh;
-    margin: 0;
-    width: 300px;
+    height: 60vh;
+    margin-top: 2vh;
+    width: 500px;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -398,11 +405,45 @@ select {
 }
 .perfil-card h2 {
     margin-top: 0;
+    margin-bottom: 1vh;
+}
+.perfil-card input,
+.perfil-card select {
+    color: #000000;
+    padding: 10px;
+    font-size: 3vh;
+    min-width: 450px;
+    border-radius: 10px;
+    margin-bottom: 1vh;
+}
+.perfil-card input[disabled],
+.perfil-card select[disabled] {
+    color: #000000;
+    background-color: transparent;
+    border-color: transparent;
+    padding: 10px;
+    font-size: 3vh;
+    min-width: 450px;
+    margin-bottom: 1vh;
+}
+.perfil-card button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.perfil-card button:hover {
+    background-color: #45a049;
+}
+.perfil-card button.mode {
+    display: none;
 }
 .perfil-info {
     margin-bottom: 10px;
 }
-.edit-icon {
+.perfil-card .edit-icon {
     position: absolute;
     top: 10px;
     right: 10px;

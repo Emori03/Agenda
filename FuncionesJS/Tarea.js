@@ -2,7 +2,11 @@
 $(document).ready(function () {
     $("#tareaForm").submit(function (event) {
         event.preventDefault();
-
+        var tareaId = "";
+        if ($("#tareaId")) {
+            tareaId = $("#tareaId").val();
+            console.log(tareaId)
+        }
         var materia = $("#materia").val();
         var tarea = $("#tarea").val();
         var tipo = $("#tipo").val();
@@ -47,6 +51,7 @@ $(document).ready(function () {
                 type: "POST",
                 url: "./FuncionesPHP/Tarea.php",
                 data: {
+                    tareaId: tareaId,
                     materia: materia,
                     tarea: tarea,
                     tipo: tipo,

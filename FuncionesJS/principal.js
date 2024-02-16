@@ -23,7 +23,8 @@ function cargarModulo() {
         dataType: "html",
         success: function(data) {
             $("#contenido").html(data);
-            construirTablaTareas();
+            llenarFiltro();
+            construirTablaTareas(0);
         },
         error: function(error) {
             console.error("Error en la solicitud AJAX:", error);
@@ -56,7 +57,14 @@ $(document).ready(function () {
             });
         } else if (moduleUrl == './Modulos/Tareas.html') {
             contentDiv.load(moduleUrl, function (response, status, xhr) {
-                construirTablaTareas();
+                construirTablaTareas(0);
+                if (status == 'error') {
+                    console.log('Error al cargar el módulo:', xhr.status, xhr.statusText);
+                }
+            });
+        } else if (moduleUrl == './Modulos/Perfil.html') {
+            contentDiv.load(moduleUrl, function (response, status, xhr) {
+                cargarPerfil();
                 if (status == 'error') {
                     console.log('Error al cargar el módulo:', xhr.status, xhr.statusText);
                 }
@@ -74,11 +82,9 @@ $(document).ready(function () {
     $.ajax({
         type: 'GET',
         url: './FuncionesPHP/ObtenerUsuario.php',
+        dataType: 'json',
         success: function(response) {
-            console.log('Valor de la variable de sesión:', response);
-
-            document.getElementById("usuario").textContent = response;
-
+            document.getElementById("usuario").textContent = response.Nombre;
         },
         error: function(error) {
             console.log('Error en la solicitud AJAX:', error);
@@ -86,12 +92,19 @@ $(document).ready(function () {
     });
 });
 
+$(document).on('input', '#filtroTabla', function() {
+    var valorInput = $(this).val();
+    construirTablaTareas(valorInput);
+    // Realizar acciones adicionales aquí, como filtrar los datos de una tabla, etc.
+});
+
 // Funcion para construir la tabla de tareas
-function construirTablaTareas() {
+function construirTablaTareas(filtro) {
     var contenedor = document.getElementById("tareas");
     contenedor.innerHTML = '';
 
     var tabla = document.createElement("table");
+    tabla.id = 'tareasTabla';
     tabla.style.borderCollapse = "collapse";
 
     var fila = document.createElement("tr");
@@ -125,7 +138,10 @@ function construirTablaTareas() {
 
     $.ajax({
         type: "GET",
-        url: "./FuncionesPHP/Tareas.php", // Reemplaza con la URL correcta
+        url: "./FuncionesPHP/Tareas.php",
+        data: {
+            filtro: filtro
+        },
         dataType: "json",
         success: function(data) {
             for (var i = 0; i < data.length; i++) {
@@ -182,6 +198,29 @@ function construirTablaTareas() {
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log("Error en la solicitud AJAX:", textStatus, errorThrown);
+        }
+    });
+}
+function llenarFiltro() {
+    var filtro = document.getElementById("filtroTabla");
+    var materia = document.createElement('option');
+    materia.text = 'Selecciona una materia';
+    materia.value = 0;
+    filtro.add(materia);
+    $.ajax({
+        type: 'GET',
+        url: './FuncionesPHP/Materias.php',
+        dataType: 'json',
+        success: function(response) {
+            for (let i = 0; i < response.length; i++) {
+                var materia = document.createElement('option');
+                materia.text = response[i].NombreMateria;
+                materia.value = response[i].MateriaId;
+                filtro.add(materia);
+            }
+        },
+        error: function(error) {
+            console.log('Error en la solicitud AJAX:', error);
         }
     });
 }
@@ -424,7 +463,13 @@ function abrirModalTarea(tarea) {
         $("#modal").fadeIn();
 
         const TareaId = tarea.id;
-
+        var inputOculto = $('<input>').attr({
+            type: 'hidden',
+            id: 'tareaId',
+            name: 'tareaId',
+            value: TareaId
+        });
+        $(this).find('form').append(inputOculto);
         $.ajax({
             type: "GET",
             url: "./FuncionesPHP/ObtenerTarea.php",
@@ -458,7 +503,7 @@ function cerrarModal() {
     } else if ($('#materias').length) {
         construirTablaMaterias();
     } else if ($('#tareas').length) {
-        construirTablaTareas();
+        construirTablaTareas(0);
     }
 }
 
@@ -502,6 +547,7 @@ function construirListaTareas() {
         
                 var tarea = document.createElement("td");
                 tarea.style.border = "1px solid black";
+                tarea.className = ''
                 tarea.textContent = data[i].Nombre + " - " + data[i].Abreviacion;
                 fila.appendChild(tarea);
                 
@@ -564,4 +610,54 @@ function obtenerTarea(TareaId) {
             console.error("Error en la solicitud AJAX:", error);
         }
     });
+}
+function cargarPerfil() {
+    var id = document.createElement("input");
+    id.type = 'hidden';
+    var nombre = document.getElementById("nombre");
+    nombre.disabled = true;
+    var correo = document.getElementById("correo");
+    correo.disabled = true;
+    var carrera = document.getElementById("carrera");
+    carrera.disabled = true;
+    var grupo = document.getElementById("grupo");
+    grupo.disabled = true;
+    $.ajax({
+        type: 'GET',
+        url: './FuncionesPHP/ObtenerUsuario.php',
+        dataType: 'json',
+        success: function(response) {
+            id.value = response.Id;
+            nombre.value = response.Nombre;
+            correo.value = response.Correo;
+            carrera.value = response.Carrera;
+            grupo.value = response.Grupo;
+        },
+        error: function(error) {
+            console.log('Error en la solicitud AJAX:', error);
+        }
+    });
+}
+function editarPerfil() {
+    var nombre = document.getElementById("nombre");
+    var correo = document.getElementById("correo");
+    var carrera = document.getElementById("carrera");
+    var grupo = document.getElementById("grupo");
+    var boton = document.getElementById("actualizar");
+    console.log(nombre)
+    console.log(correo)
+    console.log(nombre)
+    if (boton.classList.contains('mode')) {
+        nombre.disabled = false;
+        correo.disabled = false;
+        carrera.disabled = false;
+        grupo.disabled = false;
+        boton.classList.remove("mode");
+    } else {
+        nombre.disabled = true;
+        correo.disabled = true;
+        carrera.disabled = true;
+        grupo.disabled = true;
+        boton.classList.add("mode");
+    }
 }
